@@ -192,6 +192,44 @@ td.pl{color:var(--body);font-weight:400}
 .closefoot{font-size:13.5px;color:#9a9ea6}
 .closefoot b{color:var(--red);font-weight:700}
 
+
+/* ---- pptx-format components (Swapnil's deliverable/qty/remarks layout) ---- */
+.sub{margin-top:14px;font-size:16px;line-height:1.6;color:var(--body);max-width:1060px}
+.sub strong{color:var(--ink);font-weight:600}
+.notebar{position:absolute;left:68px;right:68px;bottom:56px;font-size:12.5px;line-height:1.55;
+  color:var(--body);border-left:3px solid var(--blue);padding-left:16px}
+.notebar b{color:var(--ink);font-weight:700}
+
+/* deliverable table: 3 columns, hairline rules, qty column in navy */
+table.dl{width:100%;border-collapse:collapse;margin-top:22px}
+table.dl thead th{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mute);text-align:left;padding:0 16px 11px 0;border-bottom:1px solid var(--line)}
+table.dl tbody td{font-size:13.5px;line-height:1.5;color:var(--body);padding:11px 16px 11px 0;
+  border-bottom:1px solid var(--line);vertical-align:top}
+table.dl tbody td:first-child{color:var(--ink);font-weight:700;width:27%}
+table.dl tbody td.qty{color:var(--blue);font-weight:700;width:19%;white-space:nowrap}
+table.dl tbody td.qty.hot{color:var(--red)}
+table.dl.tight tbody td{padding:8.5px 16px 8.5px 0;font-size:13px}
+table.dl.xt tbody td{padding:6px 16px 6px 0;font-size:12.5px;line-height:1.45}
+table.dl.xt thead th{padding-bottom:9px}
+.slide.packed h2{font-size:33px}
+.slide.packed .sub{margin-top:11px;font-size:15px}
+
+/* scope boundary: two columns, red ticks vs grey crosses */
+.bounds{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:26px}
+.bx h3{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--red);margin-bottom:16px;padding-bottom:11px;border-bottom:2px solid var(--red)}
+.bx.out h3{color:var(--mute);border-bottom-color:var(--line)}
+.bx ul{list-style:none}
+.bx li{font-size:13.5px;line-height:1.5;color:var(--body);padding:7px 0 7px 26px;position:relative}
+.bx li::before{content:'';position:absolute;left:2px;top:12px;width:9px;height:5px;
+  border-left:2px solid var(--red);border-bottom:2px solid var(--red);transform:rotate(-45deg)}
+.bx.out li::before{content:'';left:3px;top:13px;width:9px;height:9px;border:none;
+  background:linear-gradient(currentColor,currentColor),linear-gradient(currentColor,currentColor);
+  background-size:9px 2px,2px 9px;background-position:center,center;background-repeat:no-repeat;
+  color:#c9ccd2;transform:rotate(45deg)}
+.bx li strong{color:var(--ink);font-weight:600}
+
 /* nav in the side gutters */
 #bar{position:absolute;top:0;left:0;height:3px;background:var(--red);width:0;transition:width .4s cubic-bezier(.22,1,.36,1);z-index:5}
 #nav button{position:fixed;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .15s ease,opacity .2s ease}
@@ -205,487 +243,97 @@ td.pl{color:var(--body);font-weight:400}
 <body>
 <div id="stage">
 <div id="bar"></div>
-<!-- 00 cover -->
-<section class="slide cover on">
-  <div class="covlogos">
-    <img class="cl-l" src="assets/tempest@3x.png" alt="Tempest">
-    <img class="cl-r" src="assets/darshan.png" alt="Darshan Incense">
-  </div>
-  <div class="inner">
-    <div class="kicker">Ecommerce website proposal &middot; September 2026</div>
-    <div class="bracket">
-      <h1>Darshan International<br><em>Selling direct</em></h1>
-    </div>
-    <div class="sub">A launch plan for the 100 plus priority SKUs, and what it takes to own the transaction instead of referring it out.</div>
-  </div>
-  <div class="covfoot">
-    <span><strong>Tempest Advertising</strong> &nbsp;&middot;&nbsp; tempestadvertising.com</span>
-    <span class="r">Prepared for business and<br>implementation discussion</span>
-  </div>
-</section>
-
-<!-- 01 the snapshot -->
-<section class="slide">
+<!-- 01 scope deliverables -->
+<section class="slide packed on">
   <img class="slogo" src="assets/tempest.png" alt="Tempest">
+  <img class="clogo" src="assets/darshan.png" alt="Darshan Incense">
   <div class="inner">
-    <div class="kicker">01 &middot; The snapshot</div>
-    <h2>The catalogue is built. The checkout is not.</h2>
-    <div class="lede">Darshan has the brand, the range and the distribution. What the website does today is show a buyer the product and then hand them to somebody else to sell it. Every order placed that way is a customer Darshan never gets to keep.</div>
-    <div class="tiles">
-      <div class="tile"><div class="ic"><img src="assets/gen/stat_heritage.png" alt=""></div><div class="v">1987</div><div class="k">Brand heritage</div><div class="s">Established trust</div></div>
-      <div class="tile"><div class="ic"><img src="assets/gen/stat_fragrance.png" alt=""></div><div class="v">200+</div><div class="k">Fragrances</div><div class="s">Referenced range</div></div>
-      <div class="tile"><div class="ic"><img src="assets/gen/stat_countries.png" alt=""></div><div class="v">30+</div><div class="k">Countries</div><div class="s">Export footprint</div></div>
-      <div class="tile hot"><div class="ic"><img src="assets/gen/stat_nocart.png" alt=""></div><div class="v">0</div><div class="k">Direct orders</div><div class="s">No cart, no checkout</div></div>
-    </div>
-    <div class="pq">Everything needed to sell is already in place. <em>The one missing piece is the ability to complete the sale.</em></div>
-  </div>
-  <div class="pageno">01 / 18</div>
-</section>
-
-<!-- 02 what changes -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">02 &middot; The opportunity</div>
-    <div class="split ev">
-      <div>
-        <h2 class="two">Four capabilities you currently rent.</h2>
-        <div class="lede">A marketplace listing is a rental agreement. It carries the traffic, sets the rules and keeps the customer record. An owned storefront converts each of those into something Darshan holds.</div>
-        <div class="facts">
-          <div class="fact"><h4>The conversion</h4><p>Today a browse ends on somebody else's checkout. Owned, it ends on yours.</p></div>
-          <div class="fact"><h4>The customer record</h4><p>Names, addresses and order history stay with the marketplace. Owned, they stay with you.</p></div>
-          <div class="fact"><h4>The offer</h4><p>Pricing and promotion follow platform rules. Owned, you set them.</p></div>
-          <div class="fact"><h4>The repeat purchase</h4><p>Reorder belongs to whoever holds the account. Owned, that is Darshan.</p></div>
-        </div>
-      </div>
-      <div>
-        <div class="shot amz"><img src="assets/amazon_listing.png" alt="Amazon search results for Darshan agarbatti"></div>
-        <div class="cap">Amazon.in, &ldquo;darshan agarbatti&rdquo;, September 2026. 963 results. Third party sellers list the product, take the order and keep the buyer.</div>
-      </div>
-    </div>
-  </div>
-  <div class="pageno">02 / 18</div>
-</section>
-
-<!-- 03 the journey -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">03 &middot; The customer journey</div>
-    <h2>Six steps, and a buyer never leaves.</h2>
-    <div class="diagram"><img src="assets/gen/journey.png" alt="Customer journey from storefront to delivery"></div>
-    <div class="strip">
-      <div class="sg"><div class="sn">01 Discover</div><div class="sw">Home and collections</div></div>
-      <div class="sg"><div class="sn">02 Explore</div><div class="sw">Search and filters</div></div>
-      <div class="sg"><div class="sn">03 Choose</div><div class="sw">Detail and variants</div></div>
-      <div class="sg"><div class="sn">04 Cart</div><div class="sw">Offer and delivery</div></div>
-      <div class="sg"><div class="sn">05 Pay</div><div class="sw">Guest checkout</div></div>
-      <div class="sg"><div class="sn">06 Track</div><div class="sw">Ship and support</div></div>
-    </div>
-  </div>
-  <div class="pageno">03 / 18</div>
-</section>
-
-<!-- 04 experience rules -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">04 &middot; Experience rules</div>
-    <h2>Three jobs, and abandoned carts fail at one of them.</h2>
-    <div class="cards c3">
-      <div class="cd">
-        <div class="rend"><img src="assets/gen/storefront.png" alt=""></div>
-        <div class="bd">
-          <div class="cl">Easy to find</div>
-          <h3>Discovery by fragrance, not by SKU code</h3>
-          <p>Search suggestions, fragrance and format filters, collections built around use and occasion rather than internal categories.</p>
-        </div>
-      </div>
-      <div class="cd">
-        <div class="rend"><img src="assets/gen/variants.png" alt=""></div>
-        <div class="bd">
-          <div class="cl b">Easy to trust</div>
-          <h3>Enough detail to decide without asking</h3>
-          <p>Clear pack size and format, honest price and availability, usage and safety guidance on the page where the decision happens.</p>
-        </div>
-      </div>
-      <div class="cd">
-        <div class="rend"><img src="assets/gen/delivery.png" alt=""></div>
-        <div class="bd">
-          <div class="cl">Easy to complete</div>
-          <h3>A checkout that survives a weak connection</h3>
-          <p>Fast mobile checkout, transparent shipping and totals, confirmation and tracking the buyer can see without calling anyone.</p>
-        </div>
-      </div>
-    </div>
-    <div class="pq">Most abandoned orders fail on one of these three. <em>Almost none of them fail on price.</em></div>
-  </div>
-  <div class="pageno">04 / 18</div>
-</section>
-
-<!-- 05 two visitors -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">05 &middot; Two visitors</div>
-    <h2>A consumer and a distributor want opposite things.</h2>
-    <div class="lede">One wants a pack in ninety seconds. The other wants case quantities, territory terms and a person to talk to.</div>
-    <div class="cards c2" style="margin-top:18px">
-      <div class="pcard">
-        <div class="ph"><img src="assets/gen/persona_consumer.png" alt="Consumer shopping on a phone"></div>
-        <div class="bd">
-          <div class="cl">Consumer purchase</div>
-          <h3>Buy now, in single units</h3>
-          <ul>
-            <li>Direct selection from collections and search</li>
-            <li>Fast checkout, guest or account</li>
-            <li>Delivery, tracking and post purchase service</li>
-            <li>Reorder from order history</li>
-          </ul>
-        </div>
-      </div>
-      <div class="pcard b">
-        <div class="ph"><img src="assets/gen/persona_distributor.png" alt="Distributor in a warehouse"></div>
-        <div class="bd">
-          <div class="cl b">Distributor or export enquiry</div>
-          <h3>Qualify first, quote later</h3>
-          <ul>
-            <li>Company details and territory captured up front</li>
-            <li>Product interest and <strong>case quantities</strong>, not single units</li>
-            <li>Structured handoff to sales, never to checkout</li>
-            <li>No pricing exposed on the public path</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="pageno">05 / 18</div>
-</section>
-
-<!-- 06 storefront capability -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">06 &middot; Storefront scope</div>
-    <h2>What the customer touches at launch.</h2>
-    <div class="iconrow" style="grid-template-columns:repeat(4,1fr)">
-      <div class="ii"><img src="assets/gen/slices/ops_cat.png" alt=""></div>
-      <div class="ii"><img src="assets/gen/variants.png" alt=""></div>
-      <div class="ii"><img src="assets/gen/slices/gt_commerce.png" alt=""></div>
-      <div class="ii"><img src="assets/gen/delivery.png" alt=""></div>
-    </div>
-    <table class="t3">
-      <thead><tr><th style="width:25%">Discover</th><th style="width:25%">Product</th><th style="width:25%">Purchase</th><th>After purchase</th></tr></thead>
+    <div class="kicker">Ecommerce Website &middot; Scope of Deliverables</div>
+    <h2>An owned storefront for the 100 plus priority SKUs.</h2>
+    <table class="dl xt">
+      <thead><tr><th>Deliverable</th><th>Qty / Spec</th><th>Remarks</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="pl">Mobile first home<br>Navigation<br>Collections<br>Campaign pages</td>
-          <td class="pl">Gallery and zoom<br>Variant choice<br>Price and stock<br>Product facts</td>
-          <td class="pl">Cart<br>Guest checkout<br>Payment methods<br>Shipping calculation</td>
-          <td class="pl">Confirmation<br>Shipment tracking<br>Invoice access<br>Support request</td>
-        </tr>
-        <tr>
-          <td class="pl">Predictive search<br>Typo tolerance<br>Fragrance filters<br>Price filters</td>
-          <td class="pl">Delivery estimate<br>Usage guidance<br>Related products<br>Recently viewed</td>
-          <td class="pl">Coupon rules<br>Address validation<br>COD controls<br>Failed payment retry</td>
-          <td class="pl">Customer account<br>Saved addresses<br>Order history<br>Reorder</td>
-        </tr>
+        <tr><td>Discovery &amp; blueprint</td><td class="qty">1</td><td>Platform, architecture, assortment and journeys agreed with Client</td></tr>
+        <tr><td>Experience design</td><td class="qty">Full site</td><td>Mobile first home, collections, campaign and product pages, navigation</td></tr>
+        <tr><td>Search &amp; filters</td><td class="qty">Fragrance + format</td><td>Predictive search with typo tolerance; fragrance, format and price filters</td></tr>
+        <tr><td>Product detail pages</td><td class="qty">100+ SKUs</td><td>Gallery and zoom, variant choice, price and stock, usage and safety guidance</td></tr>
+        <tr><td>Cart, checkout &amp; payments</td><td class="qty">1</td><td>Guest checkout, coupons, address validation, gateway and COD, failed payment retry</td></tr>
+        <tr><td>Post purchase &amp; account</td><td class="qty">Full flow</td><td>Confirmation, shipment tracking, invoice access, saved addresses, order history, reorder</td></tr>
+        <tr><td>Distributor enquiry path</td><td class="qty">1</td><td>Separate from checkout: company, territory, case quantities, handoff to sales</td></tr>
+        <tr><td>Back office &amp; operations</td><td class="qty">1</td><td>Catalogue, inventory with oversell prevention, orders, refunds, shipping, promotions</td></tr>
+        <tr><td>Roles, access &amp; reporting</td><td class="qty">1 dashboard</td><td>Role based access, two factor authentication, daily operating view, data owned by Client</td></tr>
+        <tr><td>Product setup &amp; SKU onboarding</td><td class="qty">100+ SKUs</td><td>Product model, import template, validation and publishing in batches of 25 to 30</td></tr>
+        <tr><td>Testing, training &amp; launch</td><td class="qty">1</td><td>Acceptance testing, operations rehearsal, team training, launch and hypercare</td></tr>
+        <tr><td>Additional SKUs</td><td class="qty hot">On request</td><td>Size, export and import variants beyond the launch assortment</td></tr>
       </tbody>
     </table>
-    <div class="pq">Wishlist, reviews, bundles and loyalty wait. <em>Nothing optional is allowed to delay checkout readiness.</em></div>
+    <div class="notebar"><b>Two review rounds per stage, one per SKU batch.</b> Product data, images and copy are provided by Client in the agreed template.</div>
   </div>
-  <div class="pageno">06 / 18</div>
+  <div class="pageno">01 / 03</div>
 </section>
 
-<!-- 07 back office -->
+<!-- 02 scope boundaries -->
 <section class="slide">
   <img class="slogo" src="assets/tempest.png" alt="Tempest">
+  <img class="clogo" src="assets/darshan.png" alt="Darshan Incense">
   <div class="inner">
-    <div class="kicker">07 &middot; Back office</div>
-    <div class="split ev">
-      <div>
-        <h2 class="two">A storefront is only as good as the operation behind it.</h2>
-        <div class="lede">Catalogue, stock, orders, delivery and service have to behave as one controlled flow. When they do not, the customer finds out first, and they find out after paying.</div>
-        <div class="facts">
-          <div class="fact"><h4>Oversell is a trust problem</h4><p>Selling stock that is not there costs more than the order it wins.</p></div>
-          <div class="fact"><h4>Exceptions need a queue</h4><p>Failed payments, cancellations and returns need somewhere to go, and somebody named.</p></div>
-          <div class="fact"><h4>One source of truth</h4><p>Stock lives in one system. Every other view reads from it.</p></div>
-        </div>
-      </div>
-      <div>
-        <div class="shot"><img src="assets/gen/backoffice.png" alt="Inventory and fulfilment render"></div>
-        <div class="cap">Catalogue, stock and fulfilment as a single operating flow</div>
-      </div>
-    </div>
-  </div>
-  <div class="pageno">07 / 18</div>
-</section>
-
-<!-- 08 operating capabilities -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">08 &middot; Operating capabilities</div>
-    <h2>What launches, and who controls it after.</h2>
-    <table class="t3">
-      <thead><tr><th style="width:19%">Area</th><th style="width:41%">Launch capability</th><th>Management control</th></tr></thead>
-      <tbody>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/ops_cat.png" alt=""></span>Catalogue</td><td class="pl">Bulk import, variants, collections, media and publish status</td><td class="pl">Validation, approval and change ownership</td></tr>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/ops_inv.png" alt=""></span>Inventory</td><td class="pl">Stock updates, low stock alert and oversell prevention</td><td class="pl">Named source of truth and reconciliation</td></tr>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/ops_ord.png" alt=""></span>Orders</td><td class="pl">Order view, invoice, cancellation, refund and internal notes</td><td class="pl">Exception queue, statuses and audit history</td></tr>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/ops_pay.png" alt=""></span>Payments</td><td class="pl">Payment capture, COD rules, refunds and failed payment recovery</td><td class="pl">Settlement and refund reconciliation</td></tr>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/ops_shp.png" alt=""></span>Shipping</td><td class="pl">Serviceability, rates, labels, manifest and tracking</td><td class="pl">Delivery and non delivery exception monitoring</td></tr>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/ops_pro.png" alt=""></span>Promotions</td><td class="pl">Coupons and automatic discount rules</td><td class="pl">Dates, limits, exclusions and approval</td></tr>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/ops_usr.png" alt=""></span>Users</td><td class="pl">Role based access and two factor authentication</td><td class="pl">Least privilege and access review</td></tr>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/ops_rep.png" alt=""></span>Reporting</td><td class="pl">Sales, orders, products, conversion and fulfilment</td><td class="pl">Daily operating dashboard and data ownership</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="pageno">08 / 18</div>
-</section>
-
-<!-- 09 product model -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">09 &middot; Product model</div>
-    <div class="split ev">
-      <div>
-        <h2 class="two">One structure, or every system downstream inherits the mess.</h2>
-        <div class="lede">A family carries the story. A variant is what somebody chooses between. An operational SKU is what the warehouse and the tax engine act on. Collapse those three and the catalogue becomes unmanageable at a hundred products, let alone a thousand.</div>
-        <div class="facts">
-          <div class="fact"><h4>Product family</h4><p>One customer story and shared content across the range.</p></div>
-          <div class="fact"><h4>Sellable variant</h4><p>Format, weight, pack and price. What a buyer picks.</p></div>
-          <div class="fact"><h4>Operational SKU</h4><p>Barcode, stock, tax and fulfilment data behind each variant.</p></div>
-        </div>
-      </div>
-      <div>
-        <div class="shot"><img src="assets/gen/variants.png" alt="Product variants render"></div>
-        <div class="cap">One family, three sellable variants, three operational SKUs</div>
-      </div>
-    </div>
-    <div class="pq">The launch assortment is the currently active priority SKUs. <em>Size and export variants expand that count, and are a separate decision.</em></div>
-  </div>
-  <div class="pageno">09 / 18</div>
-</section>
-
-<!-- 10 publishing gate -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">10 &middot; Readiness</div>
-    <h2>Nothing reaches a customer until it clears the gate.</h2>
-    <div class="iconrow" style="grid-template-columns:repeat(4,1fr)">
-      <div class="ii"><img src="assets/gen/slices/rd_identity.png" alt=""></div>
-      <div class="ii"><img src="assets/gen/slices/rd_content.png" alt=""></div>
-      <div class="ii"><img src="assets/gen/slices/rd_commerce.png" alt=""></div>
-      <div class="ii"><img src="assets/gen/slices/rd_ops.png" alt=""></div>
-    </div>
-    <table class="t3">
-      <thead><tr><th style="width:25%">Identity</th><th style="width:25%">Customer content</th><th style="width:25%">Commerce data</th><th>Operations</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="pl">Unique SKU<br>Product family<br>Product type<br>Status</td>
-          <td class="pl">Title<br>Description<br>Fragrance notes<br>Usage and warnings</td>
-          <td class="pl">MRP and price<br>Variant values<br>Images<br>Related products</td>
-          <td class="pl">Barcode<br>Tax code<br>Packed weight<br>Stock source</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="strip">
-      <div class="sg"><div class="sn">01</div><div class="sw">Prepare</div></div>
-      <div class="sg"><div class="sn">02</div><div class="sw">Validate</div></div>
-      <div class="sg"><div class="sn">03</div><div class="sw">Review</div></div>
-      <div class="sg"><div class="sn">04</div><div class="sw">Approve</div></div>
-      <div class="sg"><div class="sn">05</div><div class="sw">Publish</div></div>
-    </div>
-    <div class="pq">An incomplete product is the most common reason a launch slips. <em>The gate catches it before the customer does.</em></div>
-  </div>
-  <div class="pageno">10 / 18</div>
-</section>
-
-<!-- 11 timeline -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">11 &middot; Timeline</div>
-    <h2>Twelve to fourteen weeks, with the risk named.</h2>
-    <table class="t3">
-      <thead><tr><th style="width:28%">Workstream</th><th>1&ndash;2</th><th>3&ndash;4</th><th>5&ndash;6</th><th>7&ndash;8</th><th>9&ndash;10</th><th>11&ndash;12</th><th>13&ndash;14</th><th style="width:15%">Duration</th></tr></thead>
-      <tbody>
-        <tr><td>Discovery and blueprint</td><td class="dot">&#9679;</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="pl">Weeks 1 to 2</td></tr>
-        <tr><td>Experience design</td><td class="dot">&#9679;</td><td class="dot">&#9679;</td><td></td><td></td><td></td><td></td><td></td><td class="pl">Weeks 2 to 4</td></tr>
-        <tr><td>Storefront and back office</td><td></td><td class="dot">&#9679;</td><td class="dot">&#9679;</td><td class="dot">&#9679;</td><td></td><td></td><td></td><td class="pl">Weeks 4 to 8</td></tr>
-        <tr><td>Payments and shipping</td><td></td><td></td><td class="dot">&#9679;</td><td class="dot">&#9679;</td><td class="dot">&#9679;</td><td></td><td></td><td class="pl">Weeks 6 to 9</td></tr>
-        <tr><td>Priority SKU onboarding</td><td></td><td></td><td></td><td class="dot">&#9679;</td><td class="dot">&#9679;</td><td></td><td></td><td class="pl">Weeks 7 to 10</td></tr>
-        <tr><td>Testing and training</td><td></td><td></td><td></td><td></td><td class="dot">&#9679;</td><td class="dot">&#9679;</td><td></td><td class="pl">Weeks 10 to 12</td></tr>
-        <tr><td>Launch and hypercare</td><td></td><td></td><td></td><td></td><td></td><td class="dot">&#9679;</td><td class="dot">&#9679;</td><td class="pl">Weeks 12 to 14</td></tr>
-      </tbody>
-    </table>
-    <div class="pq">The critical path is product data, payment onboarding and decision turnaround. <em>Not build capacity.</em></div>
-  </div>
-  <div class="pageno">11 / 18</div>
-</section>
-
-<!-- 12 milestones -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">12 &middot; Milestones</div>
-    <h2>Four points where you formally approve.</h2>
-    <div class="cards c4">
-      <div class="pnl">
-        <div class="mi"><img src="assets/gen/slices/m1.png" alt=""></div><div class="cl">M1 &middot; Weeks 1 to 2</div>
-        <h3>Blueprint</h3>
-        <ul><li>Scope agreed</li><li>Architecture agreed</li><li>Assortment confirmed</li></ul>
-      </div>
-      <div class="pnl b">
-        <div class="mi"><img src="assets/gen/slices/m2.png" alt=""></div><div class="cl b">M2 &middot; Week 4</div>
-        <h3>Design</h3>
-        <ul><li>Key journeys approved</li><li>Page set locked</li><li>Checkout defined</li></ul>
-      </div>
-      <div class="pnl">
-        <div class="mi"><img src="assets/gen/slices/m3.png" alt=""></div><div class="cl">M3 &middot; Week 10</div>
-        <h3>Build</h3>
-        <ul><li>Integrated store</li><li>Ready for testing</li><li>SKUs onboarded</li></ul>
-      </div>
-      <div class="pnl b warm">
-        <div class="mi"><img src="assets/gen/slices/m4.png" alt=""></div><div class="cl b">M4 &middot; Weeks 12 to 14</div>
-        <h3>Launch</h3>
-        <ul><li>Readiness gate passed</li><li>Team trained</li><li>Hypercare running</li></ul>
-      </div>
-    </div>
-    <div class="pq">Each milestone is a decision point, not a status update. <em>The programme does not move past one without a sign off.</em></div>
-  </div>
-  <div class="pageno">12 / 18</div>
-</section>
-
-<!-- 13 scope boundary -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">13 &middot; Scope</div>
-    <h2>The boundary is what makes acceptance objective.</h2>
-    <div class="cards c3" style="margin-top:22px">
-      <div class="pnl warm">
-        <div class="cl">Included for launch</div>
-        <ul><li>Responsive storefront</li><li>Priority SKU setup</li><li>Search and filters</li><li>Cart and checkout</li><li>Payments and shipping</li><li>Orders and tracking</li><li>Core reporting</li><li>Training and launch support</li></ul>
-      </div>
-      <div class="pnl b">
-        <div class="cl b">Consider after launch</div>
-        <ul><li>Reviews</li><li>Wishlist</li><li>Bundles</li><li>Loyalty</li><li>Subscriptions</li><li>Advanced personalization</li><li>Expanded automation</li></ul>
-      </div>
-      <div class="pnl">
-        <div class="cl">Separate scope</div>
-        <ul><li><strong>Bulk product data entry</strong></li><li><strong>Product image curation</strong></li><li>New photography production</li><li>Digital marketing strategy</li><li>Marketplace operations</li><li>System replacement</li><li>Unconfirmed B2B portal</li></ul>
-      </div>
-    </div>
-    <div class="pq">The website deliverable is experience, functionality and the template. <em>Populating a catalogue is a project of its own, and is quoted as one.</em></div>
-  </div>
-  <div class="pageno">13 / 18</div>
-</section>
-
-<!-- 14 go live -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">14 &middot; Go live</div>
-    <h2>Six gates, each with evidence and a name against it.</h2>
-    <table class="t2">
-      <thead><tr><th style="width:21%">Gate</th><th style="width:49%">Evidence required</th><th>Owner</th></tr></thead>
-      <tbody>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/gt_product.png" alt=""></span>Product</td><td class="pl">Priority assortment is complete, approved and purchasable</td><td class="pl">Darshan and implementation team</td></tr>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/gt_commerce.png" alt=""></span>Commerce</td><td class="pl">Cart, checkout, payment, tax, shipping and refund tests pass</td><td class="pl">Implementation team</td></tr>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/gt_operations.png" alt=""></span>Operations</td><td class="pl">Order, fulfilment, exception and support procedures rehearsed</td><td class="pl">Darshan operations</td></tr>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/gt_experience.png" alt=""></span>Experience</td><td class="pl">Mobile journeys and major browsers pass acceptance testing</td><td class="pl">Joint</td></tr>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/gt_security.png" alt=""></span>Security</td><td class="pl">Roles, access, backups and launch controls verified</td><td class="pl">Joint</td></tr>
-        <tr><td class="ric"><span class="ib"><img src="assets/gen/slices/gt_business.png" alt=""></span>Business</td><td class="pl">Policies, contacts, pricing and launch approval signed off</td><td class="pl">Darshan</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="pageno">14 / 18</div>
-</section>
-
-<!-- 15 the read -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">15 &middot; The read</div>
-    <h2>You do not have a product problem.<br>You have a <em>transaction</em> problem.</h2>
-    <div class="band" style="max-width:560px;margin:10px auto 0"><img src="assets/gen/theread.png" alt="Catalogue flows into a broken gap and an empty cart"></div>
-    <div class="reads" style="margin-top:18px">
-      <div class="rd"><div class="n">01 &middot; The range works</div><p>Two hundred fragrances across thirty countries. Nothing in this plan changes what you sell.</p></div>
-      <div class="rd"><div class="n">02 &middot; The journey stops short</div><p>A buyer can find the product and then cannot buy it from you.</p></div>
-      <div class="rd"><div class="n">03 &middot; The data goes elsewhere</div><p>Every marketplace order teaches somebody else who your customer is.</p></div>
-    </div>
-    <div class="pq">The catalogue already earned the traffic. <em>The next step is earning the order.</em></div>
-  </div>
-  <div class="pageno">15 / 18</div>
-</section>
-
-<!-- 16 what we need -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">16 &middot; Over to you</div>
-    <h2>What we need from Darshan.</h2>
-    <div class="darkcard">
-      <div class="cl">To start, and to hold the date</div>
-      <ul>
-        <li>The priority SKU list and product master</li>
-        <li>Approved product images and copy</li>
-        <li>Prices, taxes, stock and fulfilment rules</li>
-        <li>Payment and logistics accounts</li>
-        <li>Policies and customer service process</li>
-        <li>Four named decision owners</li>
-      </ul>
-    </div>
-    <div class="pq">Business, operations, technology and content. <em>Each needs one person who can approve without escalating.</em></div>
-  </div>
-  <div class="pageno">16 / 18</div>
-</section>
-
-<!-- 17 next step + commercials -->
-<section class="slide">
-  <img class="slogo" src="assets/tempest.png" alt="Tempest">
-  <div class="inner">
-    <div class="kicker">17 &middot; Next step</div>
-    <h2>Start with two weeks of discovery.</h2>
-    <div class="lede">Before committing the full build, confirm the platform, the assortment, the journeys and the operating workflows. Discovery is what turns this proposal into a scope with a number against it.</div>
-    <div class="split" style="margin-top:24px">
-      <div>
-        <table class="t3" style="margin-top:0">
-          <thead><tr><th style="width:38%">Discovery confirms</th><th>Output</th></tr></thead>
-          <tbody>
-            <tr><td>Platform</td><td class="pl">Commerce platform, integrations and source of truth</td></tr>
-            <tr><td>Assortment</td><td class="pl">Approved SKU list, family structure and data gaps</td></tr>
-            <tr><td>Experience</td><td class="pl">Journeys, page set, filters and checkout requirements</td></tr>
-            <tr><td>Delivery plan</td><td class="pl">Final scope, milestones, risks and commercial estimate</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="pnl warm">
-        <div class="cl">Commercials</div>
-        <h3>Costing follows selection</h3>
+    <div class="kicker">Scope Boundaries</div>
+    <h2>What the engagement covers, and what falls outside it.</h2>
+    <div class="bounds">
+      <div class="bx">
+        <h3>In scope</h3>
         <ul>
-          <li>This round is <strong>scope and audit</strong></li>
-          <li>Each confirmed workstream is quoted as its own project</li>
-          <li>Data entry and photography quoted separately if required</li>
-          <li>Estimate issued after discovery</li>
+          <li>Responsive storefront: discovery, product, cart and checkout</li>
+          <li>Back office for catalogue, inventory, orders, payments and shipping</li>
+          <li>Payment gateway, logistics and notification integration</li>
+          <li>Onboarding of the <strong>100 plus priority SKUs</strong> from the agreed template</li>
+          <li>Separate distributor and export enquiry path</li>
+          <li>Core reporting and a daily operating dashboard</li>
+          <li>Testing, team training, launch and hypercare</li>
+          <li>Two review rounds per stage; one per SKU batch</li>
+        </ul>
+      </div>
+      <div class="bx out">
+        <h3>Out of scope</h3>
+        <ul>
+          <li><strong>Bulk product data entry and image curation</strong> &mdash; quoted separately</li>
+          <li>New product photography and content production</li>
+          <li>Reviews, wishlist, bundles, loyalty and subscriptions</li>
+          <li>Digital marketing strategy, media planning and buying</li>
+          <li>Marketplace and quick commerce listing operations</li>
+          <li>Large scale replacement of ERP or existing systems</li>
+          <li>B2B portal features beyond the enquiry path</li>
+          <li>Maintenance and support after hypercare &mdash; separate AMC</li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="pageno">17 / 18</div>
+  <div class="pageno">02 / 03</div>
 </section>
 
-<!-- 18 close -->
-<section class="slide dk">
-  <div class="closewrap">
-    <div class="logocard"><img src="assets/tempest.png" alt="Tempest"></div>
-    <div class="closeline">The catalogue is ready.<br>Now let people <em>buy</em> from it.</div>
-    <div class="closefoot"><b>Tempest Advertising</b> &nbsp;&middot;&nbsp; tempestadvertising.com &nbsp;&middot;&nbsp; September 2026</div>
+<!-- 03 timeline + investment -->
+<section class="slide">
+  <img class="slogo" src="assets/tempest.png" alt="Tempest">
+  <img class="clogo" src="assets/darshan.png" alt="Darshan Incense">
+  <div class="inner">
+    <div class="kicker">Timeline &amp; Investment</div>
+    <h2>Twelve to fourteen weeks from kick off.</h2>
+    <table class="dl tight">
+      <thead><tr><th>Workstream</th><th>Qty / Spec</th><th>Remarks</th></tr></thead>
+      <tbody>
+        <tr><td>Discovery &amp; blueprint</td><td class="qty">Weeks 1&ndash;2</td><td>Platform, architecture, assortment and journeys signed off</td></tr>
+        <tr><td>Experience design</td><td class="qty">Weeks 2&ndash;4</td><td>Key journeys, page set, navigation, filters and checkout approved</td></tr>
+        <tr><td>Storefront &amp; back office</td><td class="qty">Weeks 4&ndash;8</td><td>Build and configuration of both layers in parallel</td></tr>
+        <tr><td>Payments &amp; shipping</td><td class="qty">Weeks 6&ndash;9</td><td>Gateway, logistics and notification integration</td></tr>
+        <tr><td>Priority SKU onboarding</td><td class="qty">Weeks 7&ndash;10</td><td>Import, validation and publishing in batches of 25 to 30</td></tr>
+        <tr><td>Testing, training &amp; readiness</td><td class="qty">Weeks 10&ndash;12</td><td>Acceptance testing, operations rehearsal and team training</td></tr>
+        <tr><td>Launch &amp; hypercare</td><td class="qty">Weeks 12&ndash;14</td><td>Go live, monitoring and issue resolution</td></tr>
+        <tr><td><strong>Investment</strong></td><td class="qty hot">&mdash;</td><td>To be confirmed after the discovery and blueprint stage</td></tr>
+      </tbody>
+    </table>
+    <div class="notebar"><b>The critical path is product data, payment onboarding, shipping rules and decision turnaround.</b> A delay in these moves the launch date even when development stays on schedule.</div>
   </div>
-  <div class="pageno">18 / 18</div>
+  <div class="pageno">03 / 03</div>
 </section>
 <div id="nav"><button id="prev" aria-label="Previous slide">&#8249;</button><button id="next" aria-label="Next slide">&#8250;</button></div>
 </div>
