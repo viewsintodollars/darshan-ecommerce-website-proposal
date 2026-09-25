@@ -12,8 +12,9 @@
 *{margin:0;padding:0;box-sizing:border-box}
 /* Tempest tokens per proposal-system.md §2, corrected 2026-09-21. */
 :root{
-  --red:#BE272B; --blue:#00598F; --ink:#16181d; --body:#5b6068; --mute:#9aa0a8;
-  --line:#e6e6e8; --surface:#f7f7f8; --warm:#faf6f1; --dark:#232326;
+  --red:#BD272B; --blue:#24395C; --ink:#0F0F0F; --body:#383838; --mute:#5A6B82;
+  --line:#DCE2EB; --surface:#F5F7FB; --warm:#F5F7FB; --dark:#0F0F0F;
+  --ochre:#D08A45; --good:#2C7A5A; --bad:#9B3B2E;
 }
 html,body{height:100%;background:#0e0f12;overflow:hidden;font-family:'Poppins',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
 #stage{position:absolute;top:50%;left:50%;width:1280px;height:720px;transform-origin:center;background:#fff;box-shadow:0 40px 120px rgba(0,0,0,.55)}
@@ -249,72 +250,104 @@ table.dl.xs thead th{padding-bottom:7px}
 table.dl tbody tr.sect td{padding-top:15px;padding-bottom:6px;border-bottom:none;
   font-size:9.5px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--red)}
 table.dl tbody tr.sect+tr td{border-top:1px solid var(--line)}
+
+/* v2: in scope / out of scope / terms, three columns, TEMPEST-COLORS accents */
+.bounds.c3{grid-template-columns:1fr 1fr 1fr;gap:30px;margin-top:22px}
+.bounds.c3 .bx li{font-size:12.6px;line-height:1.45;padding:5px 0 5px 24px}
+.bx h3{color:var(--good);border-bottom-color:var(--good)}
+.bx li::before{border-color:var(--good)}
+.bx.out h3{color:var(--bad);border-bottom-color:var(--bad)}
+.bx.out li::before{color:var(--bad);opacity:.75}
+.bx.terms h3{color:var(--blue);border-bottom-color:var(--blue)}
+.bx.terms li::before{content:'';left:4px;top:12px;width:6px;height:6px;border:none;border-radius:50%;
+  background:var(--blue);transform:none}
+.notebar{border-left-color:var(--ochre)}
+.slide.packed .notebar{bottom:30px;font-size:11.5px}
+table.dl tbody td:first-child{width:23%}
+table.dl tbody td.qty{width:16%}
 </style>
 </head>
 <body>
 <div id="stage">
 <div id="bar"></div>
-<!-- 01 scope deliverables -->
+
+<!-- 01 scope of deliverables -->
 <section class="slide packed on">
   <img class="slogo" src="assets/tempest.png" alt="Tempest">
   <img class="clogo" src="assets/darshan.png" alt="Darshan Incense">
   <div class="inner">
     <div class="kicker">Ecommerce Website &middot; Scope of Deliverables</div>
-    <h2>An owned storefront for the 100 plus priority SKUs.</h2>
-    <table class="dl xt">
+    <h2>A Shopify storefront for the 146 launch SKUs.</h2>
+    <table class="dl xs">
       <thead><tr><th>Deliverable</th><th>Qty / Spec</th><th>Remarks</th></tr></thead>
       <tbody>
-        <tr><td>Discovery &amp; blueprint</td><td class="qty">1</td><td>Platform, architecture, assortment and journeys agreed with Client</td></tr>
-        <tr><td>Experience design</td><td class="qty">Full site</td><td>Mobile first home, collections, campaign and product pages, navigation</td></tr>
-        <tr><td>Search &amp; filters</td><td class="qty">Fragrance + format</td><td>Predictive search with typo tolerance; fragrance, format and price filters</td></tr>
-        <tr><td>Product detail pages</td><td class="qty">100+ SKUs</td><td>Gallery and zoom, variant choice, price and stock, usage and safety guidance</td></tr>
-        <tr><td>Cart, checkout &amp; payments</td><td class="qty">1</td><td>Guest checkout, coupons, address validation, gateway and COD, failed payment retry</td></tr>
-        <tr><td>Post purchase &amp; account</td><td class="qty">Full flow</td><td>Confirmation, shipment tracking, invoice access, saved addresses, order history, reorder</td></tr>
-        <tr><td>Distributor enquiry path</td><td class="qty">1</td><td>Separate from checkout: company, territory, case quantities, handoff to sales</td></tr>
-        <tr><td>Back office &amp; operations</td><td class="qty">1</td><td>Catalogue, inventory with oversell prevention, orders, refunds, shipping, promotions</td></tr>
-        <tr><td>Roles, access &amp; reporting</td><td class="qty">1 dashboard</td><td>Role based access, two factor authentication, daily operating view, data owned by Client</td></tr>
-        <tr><td>Product setup &amp; SKU onboarding</td><td class="qty">100+ SKUs</td><td>Product model, import template, validation and publishing in batches of 25 to 30</td></tr>
-        <tr><td>Testing, training &amp; launch</td><td class="qty">1</td><td>Acceptance testing, operations rehearsal, team training, launch and hypercare</td></tr>
-        <tr><td>Additional SKUs</td><td class="qty hot">On request</td><td>Size, export and import variants beyond the launch assortment</td></tr>
+        <tr><td>Discovery &amp; blueprint</td><td class="qty">1</td><td>Architecture, assortment, journeys and the final page list signed off before design</td></tr>
+        <tr><td>Technology stack</td><td class="qty">Shopify</td><td>Shopify backend. Custom theme, hand coded (Liquid, CSS, JS, Node.js) where needed, standard sections elsewhere</td></tr>
+        <tr><td>Page set</td><td class="qty">1 + 6 + 146</td><td>Home, 6 brand or collection pages, 146 product pages. Cart, checkout and account pages included</td></tr>
+        <tr><td>Experience design</td><td class="qty">All templates</td><td>Mobile first UI/UX by our design team for home, brand, product, cart and account</td></tr>
+        <tr><td>Search &amp; filters</td><td class="qty">Fragrance, format, price</td><td>Predictive search; filters for fragrance, format (sticks, dhoop, cones, sambrani) and price</td></tr>
+        <tr><td>Product detail pages</td><td class="qty">146 SKUs</td><td>Gallery and zoom, variant choice, price and stock, usage and safety guidance</td></tr>
+        <tr><td>Cart, checkout &amp; payments</td><td class="qty">1 gateway + COD</td><td>Razorpay or equivalent, cash on delivery, coupons, guest checkout, failed payment retry</td></tr>
+        <tr><td>Customer accounts</td><td class="qty">Customer login</td><td>Login, addresses, order history, tracking, reorder. Customer data synced to Client's CRM</td></tr>
+        <tr><td>Integrations</td><td class="qty">4</td><td>Inventory (Shopify native), payment gateway, shipping and logistics partner, Client CRM</td></tr>
+        <tr><td>Back office &amp; roles</td><td class="qty">1 dashboard</td><td>Catalogue, inventory, orders, refunds, shipping, promotions; roles for inventory and reporting</td></tr>
+        <tr><td>Distributor enquiry path</td><td class="qty">1 form route</td><td>Company, territory and case quantity sent to sales. No distributor login in base scope</td></tr>
+        <tr><td>SKU onboarding</td><td class="qty">146 SKUs</td><td>Imported from Client's template, validated, published in batches of 25 to 30</td></tr>
+        <tr><td>Testing &amp; launch</td><td class="qty">1</td><td>Acceptance and live transaction tests, post launch checks, team training</td></tr>
+        <tr><td>Free support after launch</td><td class="qty">60 days</td><td>Technical bug fixes only. No new development inside this window</td></tr>
+        <tr><td>Distributor portal</td><td class="qty hot">Optional add on</td><td>Separate coded portal: distributor login, ordering, trade pricing. Priced on top of base</td></tr>
+        <tr><td>Additional pages</td><td class="qty hot">Per page</td><td>Blogs, landing pages, custom policy pages or any page beyond the 153 above</td></tr>
       </tbody>
     </table>
-    <div class="notebar"><b>Two review rounds per stage, one per SKU batch.</b> Product data, images and copy are provided by Client in the agreed template.</div>
+    <div class="notebar"><b>Stack, page count and support window are fixed here so nothing is assumed later.</b> Product data, pack images and copy come from Client in the agreed template.</div>
   </div>
   <div class="pageno">01 / 03</div>
 </section>
 
-<!-- 02 scope boundaries -->
+<!-- 02 scope boundaries + terms -->
 <section class="slide">
   <img class="slogo" src="assets/tempest.png" alt="Tempest">
   <img class="clogo" src="assets/darshan.png" alt="Darshan Incense">
   <div class="inner">
-    <div class="kicker">Scope Boundaries</div>
-    <h2>What the engagement covers, and what falls outside it.</h2>
-    <div class="bounds">
+    <div class="kicker">Ecommerce Website &middot; Scope Boundaries &amp; Terms</div>
+    <h2>What the build covers, what sits outside it, and how it is billed.</h2>
+    <div class="bounds c3">
       <div class="bx">
         <h3>In scope</h3>
         <ul>
-          <li>Responsive storefront: discovery, product, cart and checkout</li>
-          <li>Back office for catalogue, inventory, orders, payments and shipping</li>
-          <li>Payment gateway, logistics and notification integration</li>
-          <li>Onboarding of the <strong>100 plus priority SKUs</strong> from the agreed template</li>
-          <li>Separate distributor and export enquiry path</li>
-          <li>Core reporting and a daily operating dashboard</li>
-          <li>Testing, team training, launch and hypercare</li>
-          <li>Two review rounds per stage; one per SKU batch</li>
+          <li>Shopify store setup and custom theme</li>
+          <li>Design and build of the <strong>153 counted pages</strong> plus system pages</li>
+          <li>Search, filters, cart, checkout, COD and customer accounts</li>
+          <li>Inventory, payment, logistics and CRM integrations</li>
+          <li>Back office roles and a daily operating dashboard</li>
+          <li>Import and publishing of the 146 launch SKUs</li>
+          <li>Distributor enquiry form routed to sales</li>
+          <li>Testing, training, launch and <strong>60 days of bug fixes</strong></li>
         </ul>
       </div>
       <div class="bx out">
         <h3>Out of scope</h3>
         <ul>
-          <li><strong>Bulk product data entry and image curation</strong> &mdash; quoted separately</li>
-          <li>New product photography and content production</li>
-          <li>Reviews, wishlist, bundles, loyalty and subscriptions</li>
-          <li>Digital marketing strategy, media planning and buying</li>
-          <li>Marketplace and quick commerce listing operations</li>
-          <li>Large scale replacement of ERP or existing systems</li>
-          <li>B2B portal features beyond the enquiry path</li>
-          <li>Maintenance and support after hypercare &mdash; separate AMC</li>
+          <li>Product page graphics and banners: separate Website Creatives proposal</li>
+          <li>Distributor portal with login: optional add on</li>
+          <li>Pages beyond the counted 153, charged per page</li>
+          <li>New features or development during the 60 day support window</li>
+          <li>Writing product data from scratch; Client supplies it in the template</li>
+          <li>Photography, video and packaging design</li>
+          <li>Marketplace listings, ads and SEO: separate proposals</li>
+          <li>Reviews, loyalty, subscriptions and ERP replacement</li>
+        </ul>
+      </div>
+      <div class="bx terms">
+        <h3>Commercial terms</h3>
+        <ul>
+          <li><strong>50% at kick off</strong>, balance at handover. Fees exclude GST</li>
+          <li>Two review rounds per design stage, one per SKU batch</li>
+          <li>Client feedback within three business days, or the schedule moves</li>
+          <li>Shopify plan, paid apps, domain and gateway charges paid by Client</li>
+          <li>AMC starts after the 60 day support window, billed monthly</li>
+          <li>Every account, the domain and all store data stay in Client's name</li>
+          <li>Changes after sign off are quoted before work starts</li>
         </ul>
       </div>
     </div>
@@ -327,29 +360,30 @@ table.dl tbody tr.sect+tr td{border-top:1px solid var(--line)}
   <img class="slogo" src="assets/tempest.png" alt="Tempest">
   <img class="clogo" src="assets/darshan.png" alt="Darshan Incense">
   <div class="inner">
-    <div class="kicker">Timeline &amp; Investment</div>
-    <h2>Twelve to fourteen weeks from kick off.</h2>
+    <div class="kicker">Ecommerce Website &middot; Timeline &amp; Investment</div>
+    <h2>Fourteen weeks from kick off to a live store.</h2>
     <table class="dl xs">
       <thead><tr><th>Workstream</th><th>Qty / Spec</th><th>Remarks</th></tr></thead>
       <tbody>
-        <tr><td>Discovery &amp; blueprint</td><td class="qty">Weeks 1&ndash;2</td><td>Platform, architecture, assortment and journeys signed off</td></tr>
-        <tr><td>Experience design</td><td class="qty">Weeks 2&ndash;4</td><td>Key journeys, page set, navigation, filters and checkout approved</td></tr>
-        <tr><td>Storefront &amp; back office</td><td class="qty">Weeks 4&ndash;8</td><td>Build and configuration of both layers in parallel</td></tr>
-        <tr><td>Payments &amp; shipping</td><td class="qty">Weeks 6&ndash;9</td><td>Gateway, logistics and notification integration</td></tr>
-        <tr><td>Priority SKU onboarding</td><td class="qty">Weeks 7&ndash;10</td><td>Import, validation and publishing in batches of 25 to 30</td></tr>
-        <tr><td>Testing, training &amp; readiness</td><td class="qty">Weeks 10&ndash;12</td><td>Acceptance testing, operations rehearsal and team training</td></tr>
-        <tr><td>Launch &amp; hypercare</td><td class="qty">Weeks 12&ndash;14</td><td>Go live, monitoring and issue resolution</td></tr>
+        <tr><td>Discovery &amp; blueprint</td><td class="qty">Weeks 1&ndash;2</td><td>Stack, architecture, page list and journeys signed off</td></tr>
+        <tr><td>Experience design</td><td class="qty">Weeks 2&ndash;4</td><td>Templates for home, brand, product, cart and account approved</td></tr>
+        <tr><td>Theme build &amp; back office</td><td class="qty">Weeks 4&ndash;8</td><td>Custom theme and Shopify back office configured in parallel</td></tr>
+        <tr><td>Integrations</td><td class="qty">Weeks 6&ndash;9</td><td>Payment gateway, COD, logistics, notifications and CRM connected</td></tr>
+        <tr><td>SKU onboarding</td><td class="qty">Weeks 7&ndash;10</td><td>146 SKUs imported, validated and published in batches of 25 to 30</td></tr>
+        <tr><td>Testing &amp; training</td><td class="qty">Weeks 10&ndash;12</td><td>Acceptance and live transaction tests, team training</td></tr>
+        <tr><td>Launch &amp; support</td><td class="qty">Weeks 12&ndash;14</td><td>Go live, then 60 days of bug fixes from launch day</td></tr>
         <tr class="sect"><td colspan="3">Investment breakdown</td></tr>
-        <tr><td>Discovery &amp; blueprint</td><td class="qty">&#8377;38,000</td><td>Platform selection, architecture, assortment model and journey definition</td></tr>
-        <tr><td>Experience design</td><td class="qty">&#8377;84,000</td><td>Mobile first home, collections, campaign and product page system with navigation</td></tr>
-        <tr><td>Storefront &amp; back office build</td><td class="qty">&#8377;1,24,800</td><td>Both layers, search and filters, cart, checkout and account flows</td></tr>
-        <tr><td>Payments, shipping &amp; QA</td><td class="qty">&#8377;41,000</td><td>Gateway, logistics and notification integration, acceptance testing and training</td></tr>
-        <tr><td>Product page graphics</td><td class="qty">&#8377;5,900 / SKU</td><td>5 images per product. Quoted per SKU against the agreed launch assortment</td></tr>
-        <tr><td><strong>Website build</strong></td><td class="qty hot">&#8377;2,87,800</td><td>One time, excluding graphics. Graphics are billed per SKU as above</td></tr>
-        <tr><td><strong>AMC after launch</strong></td><td class="qty hot">&#8377;50,000&ndash;75,000 / mo</td><td>Bug fixes and technical maintenance. Starts after the hypercare window</td></tr>
+        <tr><td>Discovery &amp; blueprint</td><td class="qty">&#8377;38,000</td><td>Stack, architecture, assortment model, page list and journeys</td></tr>
+        <tr><td>Experience design</td><td class="qty">&#8377;84,000</td><td>UI/UX for every template, mobile first</td></tr>
+        <tr><td>Theme &amp; back office build</td><td class="qty">&#8377;1,24,800</td><td>Custom theme, search, filters, cart, checkout, accounts and back office</td></tr>
+        <tr><td>Integrations, testing &amp; launch</td><td class="qty">&#8377;41,000</td><td>Gateway, logistics and CRM integration, testing, training and launch</td></tr>
+        <tr><td><strong>Website build, one time</strong></td><td class="qty hot">&#8377;2,87,800</td><td>Covers the 153 counted pages and 146 SKUs above</td></tr>
+        <tr><td>Support, first 60 days</td><td class="qty">Included</td><td>Technical bugs only, from launch day</td></tr>
+        <tr><td>AMC after support window</td><td class="qty hot">&#8377;50,000&ndash;75,000 / mo</td><td>Bug fixes, updates and technical maintenance</td></tr>
+        <tr><td>Distributor portal &amp; extra pages</td><td class="qty">On request</td><td>Quoted before any work starts</td></tr>
       </tbody>
     </table>
-    <div class="notebar"><b>The critical path is product data, payment onboarding, shipping rules and decision turnaround.</b> A delay in these moves the launch date even when development stays on schedule.</div>
+    <div class="notebar"><b>Payment: 50% at kick off, 50% at go live.</b> Fees exclude GST. The critical path is product data, payment onboarding and decision turnaround; delays there move the launch date.</div>
   </div>
   <div class="pageno">03 / 03</div>
 </section>
